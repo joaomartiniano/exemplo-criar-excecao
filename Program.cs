@@ -10,12 +10,28 @@ namespace ExemploCriarExcecao
     {
         static void Main(string[] args)
         {
-            // Criar um código válido.
-            CodigoPostal codigoPostal1 = new CodigoPostal(3040, 087);
+            CodigoPostal codigoPostal1, codigoPostal2;
 
-            // Criar um código postal inválido.
-            // Irá gerar uma exceção.
-            CodigoPostal codigoPostal2 = new CodigoPostal(31233, 450);
+            try
+            {
+                // Criar um código postal válido
+                codigoPostal1 = new CodigoPostal(3040, 087);
+            }
+            catch (CodigoPostalInvalidoException excecao)
+            {
+                Console.WriteLine($"Ocorreu um erro ao tentar criar o código postal {excecao.CodigoPostal}");
+            }
+
+            try
+            {
+                // Criar um código postal inválido
+                // Irá gerar uma exceção
+                codigoPostal2 = new CodigoPostal(31233, 450);
+            }
+            catch (CodigoPostalInvalidoException excecao)
+            {
+                Console.WriteLine($"Ocorreu um erro ao tentar criar o código postal {excecao.CodigoPostal}");
+            }
 
             Console.ReadKey();
         }
